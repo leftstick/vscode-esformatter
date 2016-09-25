@@ -1,0 +1,69 @@
+{
+  "name": "vscode-esformatter",
+  "displayName": "esformatter",
+  "description": "An esformatter support plugin, which helps JavaScript developers beautify/format the code",
+  "version": "1.0.0",
+  "publisher": "howardzuo",
+  "engines": {
+    "vscode": "^1.5.0"
+  },
+  "bugs": {
+    "url": "https://github.com/leftstick/vscode-esformatter/issues",
+    "email": "leftstick@qq.com"
+  },
+  "homepage": "https://github.com/leftstick/vscode-esformatter/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leftstick/vscode-esformatter-check.git"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "formatter"
+  ],
+  "main": "./extension",
+  "activationEvents": [
+    "onLanguage:javascript"
+  ],
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Esformatter configuration",
+      "properties": {
+        "esformatter.formatOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to format currently working editor while saving"
+        }
+      }
+    }
+  },
+  "badges": [
+    {
+      "url": "http://vsmarketplacebadge.apphb.com/version/howardzuo.vscode-esformatter.svg",
+      "href": "https://marketplace.visualstudio.com/items?itemName=howardzuo.vscode-esformatter",
+      "description": "Extension version"
+    },
+    {
+      "url": "http://vsmarketplacebadge.apphb.com/installs/howardzuo.vscode-esformatter.svg",
+      "href": "https://marketplace.visualstudio.com/items?itemName=howardzuo.vscode-esformatter",
+      "description": "Extension installs"
+    },
+    {
+      "url": "http://vsmarketplacebadge.apphb.com/rating/howardzuo.vscode-esformatter.svg",
+      "href": "https://marketplace.visualstudio.com/items?itemName=howardzuo.vscode-esformatter#review-details",
+      "description": "Extension Rating"
+    }
+  ],
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "vscode": "^0.11.0"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^2.5.0",
+    "vscode-languageserver": "^2.5.1"
+  }
+}
