@@ -1,0 +1,9 @@
+.vscode/**
+.vscode-test/**
+docs/**
+typings/**
+test/**
+.gitignore
+jsconfig.json
+LICENSE
+README.md
