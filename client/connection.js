@@ -7,14 +7,22 @@ const {langs} = require('./supportLanguages');
 
 module.exports.connect = (context) => {
 
-    let client, serverCalledProcessExit = false;
+    let client,
+        serverCalledProcessExit = false;
 
     const serverModule = context.asAbsolutePath(path.join('server', 'index.js'));
     const debugOptions = {execArgv: ['--nolazy', '--debug=6004']};
 
     const serverOptions = {
-        run: {module: serverModule, transport: TransportKind.ipc},
-        debug: {module: serverModule, transport: TransportKind.ipc, options: debugOptions}
+        run: {
+            module: serverModule,
+            transport: TransportKind.ipc
+        },
+        debug: {
+            module: serverModule,
+            transport: TransportKind.ipc,
+            options: debugOptions
+        }
     };
 
     const clientOptions = {

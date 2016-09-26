@@ -8,16 +8,11 @@ let connection = createConnection(new IPCMessageReader(process), new IPCMessageW
 let documents = new TextDocuments();
 documents.listen(connection);
 
-
 let workspaceRoot;
 
 connection.onInitialize((params) => {
-	workspaceRoot = params.rootPath;
-	return {
-		capabilities: {
-			textDocumentSync: documents.syncKind
-		}
-	}
+    workspaceRoot = params.rootPath;
+    return {capabilities: {textDocumentSync: documents.syncKind}}
 });
 
 connection.onRequest({method: 'esformatter/format'}, (params) => {
