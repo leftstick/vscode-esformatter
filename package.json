@@ -22,9 +22,10 @@
   "keywords": [
     "formatter"
   ],
-  "main": "./extension",
+  "main": "./client/extension",
   "activationEvents": [
-    "onLanguage:javascript"
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact"
   ],
   "contributes": {
     "configuration": {
@@ -60,9 +61,33 @@
     "postinstall": "node ./node_modules/vscode/bin/install"
   },
   "devDependencies": {
-    "vscode": "^0.11.0"
+    "vscode": "^0.11.18"
   },
   "dependencies": {
+    "esformatter": "^0.9.6",
+    "esformatter-add-trailing-commas": "^1.1.0",
+    "esformatter-align": "^0.2.3",
+    "esformatter-asi": "^0.5.2",
+    "esformatter-braces": "^1.2.1",
+    "esformatter-collapse-objects": "^0.5.1",
+    "esformatter-dot-notation": "^1.3.1",
+    "esformatter-eol-last": "^1.0.0",
+    "esformatter-flow": "^1.0.1",
+    "esformatter-ignore": "^0.1.3",
+    "esformatter-jquery-chain": "^1.1.0",
+    "esformatter-jsx": "^7.0.1",
+    "esformatter-limit-linebreaks": "0.0.3",
+    "esformatter-literal-notation": "^1.0.1",
+    "esformatter-parseint": "^1.0.3",
+    "esformatter-quote-props": "^2.0.0",
+    "esformatter-quotes": "^1.1.0",
+    "esformatter-remove-trailing-commas": "^1.0.1",
+    "esformatter-semicolon-first": "^1.2.0",
+    "esformatter-semicolons": "^1.1.2",
+    "esformatter-spaced-lined-comment": "^2.0.1",
+    "esformatter-use-strict": "^3.0.0",
+    "esformatter-var-each": "^2.1.0",
+    "esformatter-wordpress": "^0.2.0",
     "vscode-languageclient": "^2.5.0",
     "vscode-languageserver": "^2.5.1"
   }

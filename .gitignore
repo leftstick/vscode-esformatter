@@ -3,3 +3,6 @@ node_modules/
 
 #typescript
 typings/
+
+#osx
+.DS_Store
