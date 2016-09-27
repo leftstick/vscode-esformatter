@@ -47,8 +47,9 @@ module.exports.connect = (context) => {
 
     client.onNotification(exitCalled, function(params) {
         serverCalledProcessExit = true;
-        client.error(`Server process exited with code ${params[0]}. This usually indicates a misconfigured esformatter setup.`, params[1]);
-        window.showErrorMessage(`esformatter server shut down itself. See 'esformatter' output channel for details.`);
+        let msg = `Server process exited with code ${params[0]}. It may caused by misconfigured esformatter setup`;
+        client.error(msg, params[1]);
+        window.showErrorMessage('esformatter server shut down itself. See "esformatter" output channel for details.');
     });
 
     context.subscriptions.push(client.start());

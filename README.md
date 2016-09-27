@@ -10,6 +10,9 @@
 ![](https://raw.githubusercontent.com/leftstick/vscode-esformatter/master/docs/img/format.gif)
 
 
+VS Code has built-in formatter, but it may lack of the customizability which required by your team urgently. This extension brings [esformatter](https://github.com/millermedeiros/esformatter), and have it as the default formatting tools.
+
+
 ## Install
 
 Launch VS Code Quick Open (`cmd`/`ctrl` + `p`), paste the following command, and press enter.
@@ -18,14 +21,30 @@ Launch VS Code Quick Open (`cmd`/`ctrl` + `p`), paste the following command, and
 ext install esformatter
 ```
 
-
 ## Usage
 
-Once you save updates to a `JavaScript` file, `vscode-esformatter` tries format code for you.
+I assume you are familiar with the [configuration](https://github.com/millermedeiros/esformatter/blob/master/doc/config.md) for `esformatter`.
 
-And `vscode-esformatter` use [esformatter.rc](https://github.com/millermedeiros/esformatter/blob/master/doc/api.md#esformatterrcfilepath-customoptionsobject) for the formatting rules.
+`vscode-esformatter` will read configurations from following places in order:
 
-> You can disable the format feature by setting `esformatter.formatOnSave: false` in your `settings.json`.
+1. `${workspaceRoot}/.esformatter`(strongly recommended)
+2. configurations directly set in `package.json`
+3. `~/.esformatter`
+4. `/.esformatter`
+
+Once you save updates to a `JavaScript` file, `vscode-esformatter` tries format code automatically for you.
+
+### Settings
+
+```javascript
+{
+    "esformatter.formatOnSave": false //whether to format code on save
+}
+```
+
+### Keybindings
+
+The default format command `shift+alt+f` is overrided, so when you go with `Format Code` approach, `vscode-esformatter` take the job from built-in formatter.
 
 
 ## Limitation

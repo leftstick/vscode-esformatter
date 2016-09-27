@@ -4,8 +4,6 @@ const {onSave} = require('./actions');
 
 module.exports.activate = function(context) {
 
-    console.log('Congratulations, your extension "vscode-esformatter" is now active!');
-
     let client = connect(context);
 
     onSave(context, client);
