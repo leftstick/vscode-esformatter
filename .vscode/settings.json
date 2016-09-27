@@ -6,5 +6,6 @@
         "**/.hg": true,
         "**/.DS_Store": true,
         "**/node_modules": true
-    }
+    },
+    "esformatter.formatOnSave": true
 }

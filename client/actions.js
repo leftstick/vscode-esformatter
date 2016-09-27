@@ -51,7 +51,7 @@ module.exports.onSave = (context, client) => {
             }
         })
             .then(result => {
-                return result ? applyTextEdits(uri, result) : false;
+                return applyTextEdits(uri, result);
             })
             .then(contentChanged => {
                 if (contentChanged) {
