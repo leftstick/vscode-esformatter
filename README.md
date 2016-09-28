@@ -47,11 +47,6 @@ Once you save updates to a `JavaScript` file, `vscode-esformatter` tries format 
 The default format command `shift+alt+f` is overrided, so when you go with `Format Code` approach, `vscode-esformatter` take the job from built-in formatter.
 
 
-## Limitation
-
-Currently, it's a very draft version, format for selection is not supported. And potential exception may found while using `vscode-esformatter`, feel free open an [issue](https://github.com/leftstick/vscode-esformatter/issues)
-
-
 ## LICENSE ##
 
 [MIT License](https://raw.githubusercontent.com/leftstick/vscode-esformatter/master/LICENSE)
