@@ -1,14 +1,12 @@
 const path = require('path');
 const {LanguageClient, CloseAction, TransportKind} = require('vscode-languageclient');
-
-const exitCalled = {method: 'esformatter/exitCalled'};
+const {window, workspace} = require('vscode');
 
 const {langs} = require('./supportLanguages');
 
 module.exports.connect = (context) => {
 
-    let client,
-        serverCalledProcessExit = false;
+    let client;
 
     const serverModule = context.asAbsolutePath(path.join('server', 'index.js'));
     const debugOptions = {execArgv: ['--nolazy', '--debug=6004']};
@@ -27,6 +25,12 @@ module.exports.connect = (context) => {
 
     const clientOptions = {
         documentSelector: langs,
+        initializationOptions: function() {
+            let configuration = workspace.getConfiguration('files');
+            return {
+                eol: configuration.get('eol', '\n')
+            };
+        },
         initializationFailedHandler: function(error) {
             client.error('Format code failed.', error);
             client.outputChannel.show();
@@ -36,20 +40,15 @@ module.exports.connect = (context) => {
                 return console.error(error, message, count);
             },
             closed: function() {
-                if (serverCalledProcessExit) {
-                    return CloseAction.DoNotRestart;
-                }
+                return CloseAction.DoNotRestart;
             }
         }
     };
 
     client = new LanguageClient('esformatter', serverOptions, clientOptions);
 
-    client.onNotification(exitCalled, function(params) {
-        serverCalledProcessExit = true;
-        let msg = `Server process exited with code ${params[0]}. It may caused by misconfigured esformatter setup`;
-        client.error(msg, params[1]);
-        window.showErrorMessage('esformatter server shut down itself. See "esformatter" output channel for details.');
+    client.onNotification({method: 'esformatter/formaterror'}, function(message) {
+        window.showErrorMessage(message);
     });
 
     context.subscriptions.push(client.start());

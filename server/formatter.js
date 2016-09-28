@@ -23,3 +23,7 @@ module.exports.format = function(configPath, content) {
 
     return content;
 };
+
+module.exports.SELECTED_FORMAT_ERROR_MSG = 'Formating failed, selected code may invalid JavaScript';
+
+module.exports.FORMAT_ERROR_MSG = 'Formating failed, your code is invalid JavaScript';
