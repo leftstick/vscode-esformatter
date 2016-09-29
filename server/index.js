@@ -23,11 +23,12 @@ connection.onInitialize((params) => {
 });
 
 const resolveParams = params => {
+    let doc = documents.get(params.textDocument.uri);
     return {
         uri: params.textDocument.uri,
-        version: params.textDocument.version,
-        textDocument: documents.get(params.textDocument.uri),
-        text: documents.get(params.textDocument.uri).getText()
+        version: doc.version,
+        textDocument: doc,
+        text: doc.getText()
     };
 };
 
