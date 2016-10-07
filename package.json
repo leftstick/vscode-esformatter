@@ -2,7 +2,7 @@
   "name": "vscode-esformatter",
   "displayName": "esformatter",
   "description": "An esformatter support plugin, which helps JavaScript developers beautify/format the code",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "publisher": "howardzuo",
   "engines": {
     "vscode": "^1.5.0"
@@ -73,6 +73,7 @@
     "esformatter-collapse-objects": "^0.5.1",
     "esformatter-dot-notation": "^1.3.1",
     "esformatter-eol-last": "^1.0.0",
+    "esformatter-equals": "^1.0.0",
     "esformatter-flow": "^1.0.1",
     "esformatter-ignore": "^0.1.3",
     "esformatter-jquery-chain": "^1.1.0",
