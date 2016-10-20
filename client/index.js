@@ -1,12 +1,9 @@
 
 const {connect} = require('./connection');
-const {onSave} = require('./actions');
 
 module.exports.activate = function(context) {
 
-    let client = connect(context);
-
-    onSave(context, client);
+    connect(context);
 
 };
 

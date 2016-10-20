@@ -38,7 +38,7 @@ Once you save updates to a `JavaScript` file, `vscode-esformatter` tries format 
 
 ```javascript
 {
-    "esformatter.formatOnSave": false //whether to format code on save
+    "editor.formatOnSave": false //whether to format code on save
 }
 ```
 

@@ -32,18 +32,6 @@ const resolveParams = params => {
     };
 };
 
-connection.onRequest({method: 'esformatter/format'}, (params) => {
-    let {version, textDocument, text} = resolveParams(params);
-    return {
-        documentVersion: version,
-        content: format(workspaceRoot, text),
-        range: {
-            start: textDocument.positionAt(0),
-            end: textDocument.positionAt(text.length)
-        }
-    };
-});
-
 connection.onRequest({method: 'textDocument/formatting'}, (params) => {
     let {textDocument, text} = resolveParams(params);
 
