@@ -8,10 +8,9 @@ let connection = createConnection(new IPCMessageReader(process), new IPCMessageW
 let documents = new TextDocuments();
 documents.listen(connection);
 
-let workspaceRoot, settings;
+let settings;
 
-connection.onInitialize((params) => {
-    workspaceRoot = params.rootPath;
+connection.onInitialize(params => {
     settings = params.initializationOptions;
     return {
         capabilities: {
@@ -20,6 +19,10 @@ connection.onInitialize((params) => {
             documentRangeFormattingProvider: true
         }
     };
+});
+
+connection.onDidChangeConfiguration(change => {
+    settings.eol = change.settings.files.eol;
 });
 
 const resolveParams = params => {
@@ -33,33 +36,36 @@ const resolveParams = params => {
 };
 
 connection.onRequest({method: 'textDocument/formatting'}, (params) => {
-    let {textDocument, text} = resolveParams(params);
+    let {uri, textDocument, text} = resolveParams(params);
 
     let range = Range.create(textDocument.positionAt(0), textDocument.positionAt(text.length));
 
     try {
-        return [TextEdit.replace(range, format(workspaceRoot, text))];
+        return [TextEdit.replace(range, format(uri, text))];
     } catch (e) {
-        connection.sendNotification({method: 'esformatter/formaterror'}, FORMAT_ERROR_MSG);
+        connection.sendNotification({
+            method: 'esformatter/formaterror'
+        }, FORMAT_ERROR_MSG);
         return [];
     }
 });
 
 connection.onRequest({method: 'textDocument/rangeFormatting'}, (params) => {
     let range = params.range;
-    let {text} = resolveParams(params);
+    let {uri, text} = resolveParams(params);
 
     let textLines = text.split(settings.eol);
     let selectedText = textLines.slice(range.start.line, range.end.line + 1).join(settings.eol);
 
     try {
-        let formatedText = format(workspaceRoot, selectedText);
-
+        let formatedText = format(uri, selectedText);
         let newRange = Range.create(Position.create(range.start.line, 0), Position.create(range.end.line, textLines[range.end.line].length));
 
         return [TextEdit.replace(newRange, formatedText)];
     } catch (e) {
-        connection.sendNotification({method: 'esformatter/formaterror'}, SELECTED_FORMAT_ERROR_MSG);
+        connection.sendNotification({
+            method: 'esformatter/formaterror'
+        }, SELECTED_FORMAT_ERROR_MSG);
         return [];
     }
 });

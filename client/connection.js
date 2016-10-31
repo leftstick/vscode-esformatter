@@ -27,9 +27,10 @@ module.exports.connect = (context) => {
         documentSelector: langs,
         initializationOptions: function() {
             let configuration = workspace.getConfiguration('files');
-            return {
-                eol: configuration.get('eol', '\n')
-            };
+            return {eol: configuration.get('eol', '\n')};
+        },
+        synchronize: {
+            configurationSection: ['files', 'esformatter']
         },
         initializationFailedHandler: function(error) {
             client.error('Format code failed.', error);
