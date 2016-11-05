@@ -2,7 +2,7 @@
   "name": "vscode-esformatter",
   "displayName": "esformatter",
   "description": "An esformatter support plugin, which helps JavaScript developers beautify/format the code",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "publisher": "howardzuo",
   "engines": {
     "vscode": "^1.6.0"
@@ -17,7 +17,9 @@
     "url": "https://github.com/leftstick/vscode-esformatter.git"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Languages",
+    "Formatters"
   ],
   "keywords": [
     "formatter"
@@ -71,7 +73,7 @@
     "esformatter-flow": "^1.0.1",
     "esformatter-ignore": "^0.1.3",
     "esformatter-jquery-chain": "^1.1.0",
-    "esformatter-jsx": "^7.1.0",
+    "esformatter-jsx": "^7.2.0",
     "esformatter-limit-linebreaks": "0.0.3",
     "esformatter-literal-notation": "^1.0.1",
     "esformatter-parseint": "^1.0.3",
