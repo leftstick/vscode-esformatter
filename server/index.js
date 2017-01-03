@@ -41,12 +41,13 @@ connection.onRequest({method: 'textDocument/formatting'}, (params) => {
     let range = Range.create(textDocument.positionAt(0), textDocument.positionAt(text.length));
 
     try {
+        connection.sendDiagnostics({
+            uri: uri,
+            diagnostics: []
+        });
         return [TextEdit.replace(range, format(uri, text))];
     } catch (e) {
-        connection.sendNotification({
-            method: 'esformatter/formaterror'
-        }, FORMAT_ERROR_MSG);
-        return [];
+        return errorHandler(e, uri, FORMAT_ERROR_MSG);
     }
 });
 
@@ -60,14 +61,27 @@ connection.onRequest({method: 'textDocument/rangeFormatting'}, (params) => {
     try {
         let formatedText = format(uri, selectedText);
         let newRange = Range.create(Position.create(range.start.line, 0), Position.create(range.end.line, textLines[range.end.line].length));
-
+        connection.sendDiagnostics({
+            uri: uri,
+            diagnostics: []
+        });
         return [TextEdit.replace(newRange, formatedText)];
     } catch (e) {
-        connection.sendNotification({
-            method: 'esformatter/formaterror'
-        }, SELECTED_FORMAT_ERROR_MSG);
-        return [];
+        return errorHandler(e, uri, SELECTED_FORMAT_ERROR_MSG);
     }
 });
 
 connection.listen();
+
+function errorHandler(e, uri, msg) {
+    if (e.name === 'SyntaxError') {
+        connection.sendDiagnostics({
+            uri: uri,
+            diagnostics: e.diagnostics || []
+        });
+        return [];
+    }
+    connection.sendNotification({
+        method: 'esformatter/formaterror'
+    }, msg);
+}
