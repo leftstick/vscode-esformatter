@@ -2,7 +2,7 @@
   "name": "vscode-esformatter",
   "displayName": "esformatter",
   "description": "An esformatter support plugin, which helps JavaScript developers beautify/format the code",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "publisher": "howardzuo",
   "engines": {
     "vscode": "^1.8.1"
@@ -58,7 +58,7 @@
   },
   "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
-    "vscode": "^1.0.3"
+    "vscode": "^1.0.5"
   },
   "dependencies": {
     "esformatter": "^0.10.0",
@@ -67,13 +67,14 @@
     "esformatter-asi": "^0.5.2",
     "esformatter-braces": "^1.2.1",
     "esformatter-collapse-objects": "^0.5.1",
+    "esformatter-curly": "0.0.2",
     "esformatter-dot-notation": "^1.3.1",
     "esformatter-eol-last": "^1.0.0",
     "esformatter-equals": "^1.0.0",
     "esformatter-flow": "^1.0.1",
     "esformatter-ignore": "^0.1.3",
     "esformatter-jquery-chain": "^1.1.0",
-    "esformatter-jsx": "^7.4.0",
+    "esformatter-jsx": "^7.4.1",
     "esformatter-limit-linebreaks": "0.0.3",
     "esformatter-literal-notation": "^1.0.1",
     "esformatter-parseint": "^1.0.3",
@@ -86,7 +87,7 @@
     "esformatter-use-strict": "^3.0.0",
     "esformatter-var-each": "^2.1.0",
     "esformatter-wordpress": "^0.2.1",
-    "vscode-languageclient": "^2.6.3",
-    "vscode-languageserver": "^2.6.2"
+    "vscode-languageclient": "^3.1.0",
+    "vscode-languageserver": "^3.1.0"
   }
 }

@@ -48,9 +48,13 @@ module.exports.connect = (context) => {
 
     client = new LanguageClient('esformatter', serverOptions, clientOptions);
 
-    client.onNotification({method: 'esformatter/formaterror'}, function(message) {
-        window.showErrorMessage(message);
-    });
+    client
+        .onReady()
+        .then(() => {
+            client.onNotification({method: 'esformatter/formaterror'}, function(message) {
+                window.showErrorMessage(message);
+            });
+        });
 
     context.subscriptions.push(client.start());
 
