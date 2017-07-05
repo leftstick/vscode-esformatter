@@ -7,7 +7,7 @@
   "engines": {
     "vscode": "^1.8.1"
   },
-  "icon": "docs/img/logo.png",
+  "icon": "images/logo.png",
   "bugs": {
     "url": "https://github.com/leftstick/vscode-esformatter/issues",
     "email": "leftstick@qq.com"
