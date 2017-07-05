@@ -39,17 +39,17 @@
   },
   "badges": [
     {
-      "url": "http://vsmarketplacebadge.apphb.com/version/howardzuo.vscode-esformatter.svg",
+      "url": "https://vsmarketplacebadge.apphb.com/version/howardzuo.vscode-esformatter.svg",
       "href": "https://marketplace.visualstudio.com/items?itemName=howardzuo.vscode-esformatter",
       "description": "Extension version"
     },
     {
-      "url": "http://vsmarketplacebadge.apphb.com/installs/howardzuo.vscode-esformatter.svg",
+      "url": "https://vsmarketplacebadge.apphb.com/installs/howardzuo.vscode-esformatter.svg",
       "href": "https://marketplace.visualstudio.com/items?itemName=howardzuo.vscode-esformatter",
       "description": "Extension installs"
     },
     {
-      "url": "http://vsmarketplacebadge.apphb.com/rating/howardzuo.vscode-esformatter.svg",
+      "url": "https://vsmarketplacebadge.apphb.com/rating/howardzuo.vscode-esformatter.svg",
       "href": "https://marketplace.visualstudio.com/items?itemName=howardzuo.vscode-esformatter#review-details",
       "description": "Extension Rating"
     }
