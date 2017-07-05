@@ -53,7 +53,7 @@ The default format command `shift+alt+f` is overrided, so when you go with `Form
 
 
 [vs-url]: https://marketplace.visualstudio.com/items?itemName=howardzuo.vscode-esformatter
-[vs-image]: http://vsmarketplacebadge.apphb.com/version/howardzuo.vscode-esformatter.svg
-[install-url]: http://vsmarketplacebadge.apphb.com/installs/howardzuo.vscode-esformatter.svg
-[rate-url]: http://vsmarketplacebadge.apphb.com/rating/howardzuo.vscode-esformatter.svg
+[vs-image]: https://vsmarketplacebadge.apphb.com/version/howardzuo.vscode-esformatter.svg
+[install-url]: https://vsmarketplacebadge.apphb.com/installs/howardzuo.vscode-esformatter.svg
+[rate-url]: https://vsmarketplacebadge.apphb.com/rating/howardzuo.vscode-esformatter.svg
 [license-url]: https://img.shields.io/github/license/leftstick/vscode-esformatter.svg
