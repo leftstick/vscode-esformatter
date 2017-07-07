@@ -8,7 +8,7 @@ export function connect(context: vscode.ExtensionContext): LanguageClient {
 
     let client: LanguageClient;
 
-    const serverModule = context.asAbsolutePath(path.join('server', 'index.js'));
+    const serverModule = context.asAbsolutePath(path.join('out', 'src', 'server', 'index.js'));
     const debugOptions = { execArgv: ['--nolazy', '--debug=6004'] };
 
     const serverOptions = {
