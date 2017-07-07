@@ -1,11 +1,11 @@
-
-const {IPCMessageReader, IPCMessageWriter, createConnection, TextDocuments, Range, Position, TextEdit} = require('vscode-languageserver');
-const {format, FORMAT_ERROR_MSG, SELECTED_FORMAT_ERROR_MSG} = require('./formatter');
+import * as vscode from 'vscode';
+import { IConnection, IPCMessageReader, IPCMessageWriter, createConnection, TextDocuments, Range, Position, TextEdit, NotificationType, RequestType, DocumentFormattingParams, DocumentRangeFormattingParams } from 'vscode-languageserver';
+import { format, FORMAT_ERROR_MSG, SELECTED_FORMAT_ERROR_MSG } from './formatter';
 
 // Create a connection for the server. The connection uses Node's IPC as a transport
-let connection = createConnection(new IPCMessageReader(process), new IPCMessageWriter(process));
+let connection: IConnection = createConnection(new IPCMessageReader(process), new IPCMessageWriter(process));
 
-let documents = new TextDocuments();
+const documents = new TextDocuments();
 documents.listen(connection);
 
 let settings;
@@ -25,8 +25,8 @@ connection.onDidChangeConfiguration(change => {
     settings.eol = change.settings.files.eol;
 });
 
-const resolveParams = params => {
-    let doc = documents.get(params.textDocument.uri);
+const resolveParams = (params: DocumentFormattingParams) => {
+    const doc = documents.get(params.textDocument.uri);
     return {
         uri: params.textDocument.uri,
         version: doc.version,
@@ -35,8 +35,8 @@ const resolveParams = params => {
     };
 };
 
-connection.onRequest({method: 'textDocument/formatting'}, (params) => {
-    let {uri, textDocument, text} = resolveParams(params);
+connection.onRequest(new RequestType('textDocument/formatting'), (params: DocumentFormattingParams) => {
+    let { uri, textDocument, text } = resolveParams(params);
 
     let range = Range.create(textDocument.positionAt(0), textDocument.positionAt(text.length));
 
@@ -51,9 +51,9 @@ connection.onRequest({method: 'textDocument/formatting'}, (params) => {
     }
 });
 
-connection.onRequest({method: 'textDocument/rangeFormatting'}, (params) => {
+connection.onRequest(new RequestType('textDocument/rangeFormatting'), (params: DocumentRangeFormattingParams) => {
     let range = params.range;
-    let {uri, text} = resolveParams(params);
+    let { uri, text } = resolveParams(params);
 
     let textLines = text.split(settings.eol);
     let selectedText = textLines.slice(range.start.line, range.end.line + 1).join(settings.eol);
@@ -81,7 +81,5 @@ function errorHandler(e, uri, msg) {
         });
         return [];
     }
-    connection.sendNotification({
-        method: 'esformatter/formaterror'
-    }, msg);
+    connection.sendNotification(new NotificationType('esformatter/formaterror'), msg);
 }

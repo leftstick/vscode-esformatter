@@ -1,10 +1,10 @@
-const esformatter = require('esformatter');
+import * as esformatter from 'esformatter';
 
 const PLUGIN_UNSUPPORT_MSG = 'Cannot find plugin';
 
 const SYNTAX_ERROR_REGEX = /(.*) \((\d+:\d+)\)/;
 
-const resolveError = function(error) {
+const resolveError = function (error) {
     let errorMsg = error.message;
     if (errorMsg.indexOf(PLUGIN_UNSUPPORT_MSG) > -1) {
         let index = errorMsg.indexOf(PLUGIN_UNSUPPORT_MSG) + 19;
@@ -35,7 +35,7 @@ const resolveError = function(error) {
     throw error;
 };
 
-module.exports.format = function(configPath, content) {
+export function format(configPath, content) {
 
     try {
         return esformatter.format(content, esformatter.rc(configPath));
@@ -46,6 +46,6 @@ module.exports.format = function(configPath, content) {
     return content;
 };
 
-module.exports.SELECTED_FORMAT_ERROR_MSG = 'Formating failed, selected code may invalid JavaScript';
+export const SELECTED_FORMAT_ERROR_MSG = 'Formating failed, selected code may invalid JavaScript';
 
-module.exports.FORMAT_ERROR_MSG = 'Formating failed, your code is invalid JavaScript';
+export const FORMAT_ERROR_MSG = 'Formating failed, your code is invalid JavaScript';
