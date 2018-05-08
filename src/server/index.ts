@@ -81,5 +81,5 @@ function errorHandler(e, uri, msg) {
         });
         return [];
     }
-    connection.sendNotification(new NotificationType('esformatter/formaterror'), msg);
+    connection.sendNotification(new NotificationType('esformatter/formaterror'), e.message || msg);
 }
